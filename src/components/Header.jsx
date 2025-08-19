@@ -33,7 +33,7 @@ export default function Header() {
         About
       </NavLink>
       <NavLink
-        to="/Coffes"
+        to="/addCoffe"
         className={({ isActive }) =>
           `mr-3 transition-all duration-200 hover:scale-95 ${
             isActive

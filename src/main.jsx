@@ -3,8 +3,8 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import AddCoffe from './components/AddCoffe';
-import UpdateCoffe from './components/UpdateCoffe';
+import AddCoffe from './Pages/AddCoffe';
+import UpdateCoffe from './Pages/UpdateCoffe';
 import Root from './Layout/Root';
 import Home from './Pages/Home';
 
