@@ -42,7 +42,7 @@ export default function Header() {
           }`
         }
       >
-        Coffes
+        Add Coffe
       </NavLink>
       <NavLink
         to="/contact"
@@ -96,7 +96,7 @@ export default function Header() {
       </nav>
 
       {/* Right-side Buttons */}
-      <div className="flex items-center space-x-4">
+      <div className="flex items-center ">
         <Link
           to="/"
           className="hidden md:flex bg-[#E3B577] text-black px-5 py-2 rounded-full text-sm font-medium hover:border-2 hover:border-white hover:bg-transparent hover:text-white transition"

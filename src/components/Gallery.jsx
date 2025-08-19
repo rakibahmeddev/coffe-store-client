@@ -8,11 +8,15 @@ import cup6 from '../assets/images/cups/Rectangle 14.png';
 import cup7 from '../assets/images/cups/Rectangle 15.png';
 import cup8 from '../assets/images/cups/Rectangle 16.png';
 
+import galleryBg from '../assets/images/more/bg.jpg';
+
 const Gallery = () => {
   const images = [cup, cup2, cup3, cup4, cup5, cup6, cup7, cup8];
 
   return (
-    <div className="my-18">
+    <div className="py-18"
+    style={{ backgroundImage: `url(${galleryBg})` }}
+    >
       <h1 className="text-3xl text-[#331A15] font-semibold text-center mx-auto">
         Our Coffee Designs
       </h1>
