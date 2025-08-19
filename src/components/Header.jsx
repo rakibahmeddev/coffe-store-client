@@ -61,10 +61,10 @@ export default function Header() {
 
   return (
     <header
-      className=" px-6 py-3 md:py-4 bg-cover bg-center"
+      className="sticky top-0 z-50 px-6 py-3 md:py-4 bg-cover bg-center"
       style={{ backgroundImage: `url(${headerbg})` }}
     >
-      <div className='w-3/4 mx-auto flex items-center justify-between'>
+      <div className="w-3/4 mx-auto flex items-center justify-between">
         {/* Logo */}
         <Link className="text-2xl font-bold text-white">
           <img src={logo} className="max-w-[250px]" alt="Coffe Logo" />
