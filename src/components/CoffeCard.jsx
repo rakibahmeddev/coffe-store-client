@@ -6,46 +6,58 @@ import { FaTrash } from 'react-icons/fa';
 const CoffeCard = ({ coffe }) => {
   const { name, quantity, supplier, taste, category, description, photoUrl } =
     coffe;
+
   return (
-    <div className="p-4 bg-white rounded-lg shadow  flex items-center ">
-      {/* image area  */}
+    <div
+      className="p-4 bg-[#F5F4F1] rounded-lg shadow-lg flex items-center 
+                    transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl"
+    >
+      {/* image area */}
       <div className="w-[25%]">
         <img
-          className="rounded-md max-h-40 w-full object-cover"
+          className="rounded-md max-h-40 w-full object-cover transition-transform duration-300 hover:scale-105"
           src={photoUrl}
           alt="officeImage"
         />
       </div>
 
-      {/* contents area  */}
+      {/* contents area */}
       <div className="w-[65%]">
-        <p className="text-gray-900 text-xl font-semibold ml-2 mt-2">{name}</p>
-        <p className="text-gray-500 text-sm my-3 ml-2">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore..
+        <h3 className="text-[#331A15] text-base ml-2 mt-2">
+          <b>Name: </b>
+          <span className="">{name}</span>
+        </h3>
+        <p className="text-black font-semibold text-sm my-3 ml-2">
+          Supplier: <span className="font-normal">{supplier}</span>
+        </p>
+        <p className="text-black font-semibold text-sm my-3 ml-2">
+          Taste: <span className="font-normal">{taste}</span>
         </p>
       </div>
 
-      {/* buttons area  */}
-      <div className="w-[15%] ">
+      {/* buttons area */}
+      <div className="w-[15%]">
         <div className="flex flex-col justify-end items-end">
           <button
             type="button"
-            className=" bg-[#D2B48C] text-white m-1 p-2 rounded"
+            className="bg-[#D2B48C] text-white cursor-pointer m-1 p-2 rounded 
+                       transition-all duration-200 hover:bg-[#c19c73] hover:scale-110"
           >
             <IoMdEye />
           </button>
 
           <button
             type="button"
-            className=" bg-[#3C393B] text-white m-1 p-2 rounded"
+            className="bg-[#3C393B] text-white cursor-pointer m-1 p-2 rounded 
+                       transition-all duration-200 hover:bg-[#2e2b2c] hover:scale-110"
           >
             <FaPenToSquare />
           </button>
 
           <button
             type="button"
-            className=" bg-[#EA4744] text-white m-1 p-2 rounded"
+            className="bg-[#EA4744] text-white cursor-pointer m-1 p-2 rounded 
+                       transition-all duration-200 hover:bg-[#d33d3b] hover:scale-110"
           >
             <FaTrash />
           </button>
