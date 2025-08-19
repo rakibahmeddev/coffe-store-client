@@ -6,7 +6,7 @@ const Coffes = ({ coffes }) => {
   console.log(coffes);
   return (
     <div
-      className="relative py-22 bg-no-repeat bg-contain bg-center z-10"
+      className="relative py-22 bg-no-repeat bg-cover bg-[center_-20%] z-10 w-full"
       style={{ backgroundImage: `url(${bgImg})` }}
     >
       <h2 className="text-4xl text-center font-semibold text-[#331A15] pb-4">

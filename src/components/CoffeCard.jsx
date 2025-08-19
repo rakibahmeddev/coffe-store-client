@@ -4,8 +4,7 @@ import { FaPenToSquare } from 'react-icons/fa6';
 import { FaTrash } from 'react-icons/fa';
 
 const CoffeCard = ({ coffe }) => {
-  const { name, quantity, supplier, taste, category, description, photoUrl } =
-    coffe;
+  const { name, supplier, taste, photoUrl } = coffe;
 
   return (
     <div
@@ -15,7 +14,7 @@ const CoffeCard = ({ coffe }) => {
       {/* image area */}
       <div className="w-[25%]">
         <img
-          className="rounded-md max-h-40 w-full object-cover transition-transform duration-300 hover:scale-105"
+          className="rounded-md w-[80px] transition-transform duration-300 hover:scale-105"
           src={photoUrl}
           alt="officeImage"
         />

@@ -5,7 +5,7 @@ const Banner = () => {
   return (
     <section
       style={{ backgroundImage: `url(${BannerImg})` }}
-      className="relative py-20 flex flex-col items-center justify-center text-center shadow-lg bg-cover bg-center h-[450px]"
+      className="relative py-20 flex flex-col items-center justify-center text-center shadow-lg bg-cover bg-center h-[80vh]"
     >
       <div className="flex w-3/4 mx-auto px-10">
         <div className="w-[50%]"></div>
