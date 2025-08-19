@@ -14,9 +14,7 @@ const Gallery = () => {
   const images = [cup, cup2, cup3, cup4, cup5, cup6, cup7, cup8];
 
   return (
-    <div className="py-18"
-    style={{ backgroundImage: `url(${galleryBg})` }}
-    >
+    <div className=" py-18" style={{ backgroundImage: `url(${galleryBg})` }}>
       <h1 className="text-3xl text-[#331A15] font-semibold text-center mx-auto">
         Our Coffee Designs
       </h1>
@@ -24,7 +22,7 @@ const Gallery = () => {
         A visual collection of our most recent works - each piece crafted with
         intention, emotion, and style.
       </p>
-      <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-8 px-2 md:px-0">
+      <div className="w-3/4 mx-auto mt-10 grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-8 px-2 md:px-0">
         {images.map((img, index) => (
           <div key={index} className="w-full overflow-hidden rounded-lg">
             <img

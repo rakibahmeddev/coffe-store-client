@@ -7,7 +7,7 @@ const Banner = () => {
       style={{ backgroundImage: `url(${BannerImg})` }}
       className="relative py-20 flex flex-col items-center justify-center text-center shadow-lg bg-cover bg-center h-[450px]"
     >
-      <div className="flex w-full px-10">
+      <div className="flex w-3/4 mx-auto px-10">
         <div className="w-[50%]"></div>
         <div className="w-[50%] text-left">
           <h1 className="text-4xl md:text-4xl font-bold text-white mb-4">
