@@ -1,5 +1,6 @@
 import React from 'react';
 import bgImg from '../assets/images/more/bg2.png';
+import Swal from 'sweetalert2';
 
 const AddCoffe = () => {
   const handleAddCoffe = (e) => {
@@ -23,6 +24,26 @@ const AddCoffe = () => {
       photoUrl,
     };
     console.log(coffe);
+
+    // send data to the backend
+    fetch('http://localhost:3000/addcoffe', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(coffe),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            title: 'Success',
+            text: 'Your Coffe is Added',
+            icon: 'success',
+            confirmButtonText: 'Close',
+          });
+        }
+      });
   };
 
   return (
@@ -35,8 +56,9 @@ const AddCoffe = () => {
           Add Coffe
         </h1>
         <form
-        onSubmit={handleAddCoffe}
-         className="flex flex-col items-center text-sm">
+          onSubmit={handleAddCoffe}
+          className="flex flex-col items-center text-sm"
+        >
           {/* flex  */}
           <div className="w-full px-16">
             {/* add coffe name and quantity row  */}
