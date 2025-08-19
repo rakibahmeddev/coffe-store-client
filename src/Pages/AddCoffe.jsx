@@ -2,6 +2,29 @@ import React from 'react';
 import bgImg from '../assets/images/more/bg2.png';
 
 const AddCoffe = () => {
+  const handleAddCoffe = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const quantity = form.quantity.value;
+    const supplier = form.supplier.value;
+    const taste = form.taste.value;
+    const category = form.category.value;
+    const description = form.description.value;
+    const photoUrl = form.photourl.value;
+
+    const coffe = {
+      name,
+      quantity,
+      supplier,
+      taste,
+      category,
+      description,
+      photoUrl,
+    };
+    console.log(coffe);
+  };
+
   return (
     <div
       className="bg-no-repeat bg-cover bg-center  p-22"
@@ -11,9 +34,11 @@ const AddCoffe = () => {
         <h1 className="text-4xl text-center font-semibold text-slate-700 pb-4">
           Add Coffe
         </h1>
-        <form className="flex flex-col items-center text-sm">
+        <form
+        onSubmit={handleAddCoffe}
+         className="flex flex-col items-center text-sm">
           {/* flex  */}
-          <div className='w-full px-16'>
+          <div className="w-full px-16">
             {/* add coffe name and quantity row  */}
             <div className="mb-3">
               <div className="flex flex-col md:flex-row items-center gap-8 w-full">
@@ -114,7 +139,7 @@ const AddCoffe = () => {
                   <input
                     className="h-12 p-2 mt-2 w-full border border-gray-500/30 rounded outline-none  bg-white focus:border-[#e3b578]"
                     type="text"
-                    name="photo url"
+                    name="photourl"
                     placeholder="Photo URL"
                     required
                   />
@@ -127,8 +152,7 @@ const AddCoffe = () => {
             type="submit"
             value="Add Coffe"
             className="mt-5 bg-[#e3b578] text-[#372727] h-12 w-56 px-4 rounded active:scale-95 transition hover:border hover:border-[#e3b578] hover:bg-white cursor-pointer"
-         />
-        
+          />
         </form>
       </div>
     </div>
