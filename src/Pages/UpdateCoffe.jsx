@@ -28,6 +28,7 @@ const UpdateCoffe = () => {
       description,
       photoUrl,
     };
+    console.log(coffe)
 
   }
 

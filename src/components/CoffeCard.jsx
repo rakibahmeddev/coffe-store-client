@@ -38,7 +38,7 @@ const CoffeCard = ({ coffe }) => {
       {/* buttons area */}
       <div className="w-[15%]">
         <div className="flex flex-col justify-end items-end">
-          <Link to={`updatecoffe/${_id}`}>
+          <Link to={`coffeDetails/${_id}`}>
             <button
               type="button"
               className="bg-[#D2B48C] text-white cursor-pointer m-1 p-2 rounded 
