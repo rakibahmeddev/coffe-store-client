@@ -4,9 +4,17 @@ import Swal from 'sweetalert2';
 
 const UpdateCoffe = () => {
   const coffe = useLoaderData();
-  const { _id, name, quantity, supplier, taste, category, description, photoUrl } = coffe;
+  const {
+    _id,
+    name,
+    quantity,
+    supplier,
+    taste,
+    category,
+    description,
+    photoUrl,
+  } = coffe;
   console.log(coffe);
-
 
   const handleUpdateCoffe = (e) => {
     e.preventDefault();
@@ -28,9 +36,21 @@ const UpdateCoffe = () => {
       description,
       photoUrl,
     };
-    console.log(coffe)
+    console.log(coffe);
 
-  }
+    // send data to the server
+    fetch(`http://localhost:3000/coffe/${_id}`, {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(coffe),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
 
   return (
     <div
