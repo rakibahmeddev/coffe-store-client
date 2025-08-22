@@ -48,6 +48,16 @@ const UpdateCoffe = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Coffe Updated Successfully',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+
         console.log(data);
       });
   };
