@@ -3,13 +3,41 @@ import { IoMdEye } from 'react-icons/io';
 import { FaPenToSquare } from 'react-icons/fa6';
 import { FaTrash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const CoffeCard = ({ coffe }) => {
   const { _id, name, supplier, taste, photoUrl } = coffe;
 
-  const handleDelete = _id => {
-    console.log(_id)
-  }
+  const handleDelete = (_id) => {
+    console.log(_id);
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // send delete request from here
+        fetch(`http://localhost:3000/coffe/${_id}`, {
+          method: 'DELETE',
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.success) {
+              Swal.fire({
+                title: 'Deleted!',
+                text: 'Your file has been deleted.',
+                icon: 'success',
+              });
+            }
+          });
+      }
+    });
+  };
 
   return (
     <div
@@ -52,13 +80,15 @@ const CoffeCard = ({ coffe }) => {
             </button>
           </Link>
 
-          <Link to={`updateCoffe/${_id}`}><button
-            type="button"
-            className="bg-[#3C393B] text-white cursor-pointer m-1 p-2 rounded 
+          <Link to={`updateCoffe/${_id}`}>
+            <button
+              type="button"
+              className="bg-[#3C393B] text-white cursor-pointer m-1 p-2 rounded 
                        transition-all duration-200 hover:bg-[#2e2b2c] hover:scale-110"
-          >
-            <FaPenToSquare />
-          </button></Link>
+            >
+              <FaPenToSquare />
+            </button>
+          </Link>
 
           <button
             onClick={() => handleDelete(_id)}
