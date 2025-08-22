@@ -2,9 +2,10 @@ import React from 'react';
 import { IoMdEye } from 'react-icons/io';
 import { FaPenToSquare } from 'react-icons/fa6';
 import { FaTrash } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const CoffeCard = ({ coffe }) => {
-  const { name, supplier, taste, photoUrl } = coffe;
+  const { _id, name, supplier, taste, photoUrl } = coffe;
 
   return (
     <div
@@ -37,13 +38,15 @@ const CoffeCard = ({ coffe }) => {
       {/* buttons area */}
       <div className="w-[15%]">
         <div className="flex flex-col justify-end items-end">
-          <button
-            type="button"
-            className="bg-[#D2B48C] text-white cursor-pointer m-1 p-2 rounded 
+          <Link to={`updatecoffe/${_id}`}>
+            <button
+              type="button"
+              className="bg-[#D2B48C] text-white cursor-pointer m-1 p-2 rounded 
                        transition-all duration-200 hover:bg-[#c19c73] hover:scale-110"
-          >
-            <IoMdEye />
-          </button>
+            >
+              <IoMdEye />
+            </button>
+          </Link>
 
           <button
             type="button"
