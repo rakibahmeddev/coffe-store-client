@@ -2,7 +2,7 @@ import React from 'react';
 import bgImg from '../assets/images/more/bg1.png';
 import CoffeCard from './CoffeCard';
 
-const Coffes = ({ coffes }) => {
+const Coffes = ({ coffes, setCoffes }) => {
   console.log(coffes);
   return (
     <div
@@ -15,7 +15,13 @@ const Coffes = ({ coffes }) => {
 
       <div className="relative w-3/4 mx-auto z-20 grid md:grid-cols-2 gap-8 mt-9">
         {coffes.map((coffe) => (
-          <CoffeCard key={coffe._id} coffe={coffe} />
+          <CoffeCard 
+          key={coffe._id} 
+          coffe={coffe} 
+          coffes={coffes}
+          setCoffes={setCoffes}
+          
+          />
         ))}
       </div>
     </div>

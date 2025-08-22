@@ -5,7 +5,7 @@ import { FaTrash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
-const CoffeCard = ({ coffe }) => {
+const CoffeCard = ({ coffe, coffes, setCoffes }) => {
   const { _id, name, supplier, taste, photoUrl } = coffe;
 
   const handleDelete = (_id) => {
@@ -27,13 +27,17 @@ const CoffeCard = ({ coffe }) => {
         })
           .then((res) => res.json())
           .then((data) => {
-            if (data.success) {
+            if (data.deletedCount === 1) {
               Swal.fire({
                 title: 'Deleted!',
-                text: 'Your file has been deleted.',
+                text: 'Your coffe has been deleted.',
                 icon: 'success',
               });
             }
+
+            // update the ui
+            const newCoffes = coffes.filter((coffe) => coffe._id !== _id);
+            setCoffes(newCoffes);
           });
       }
     });
