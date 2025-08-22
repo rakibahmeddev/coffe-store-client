@@ -48,13 +48,13 @@ const CoffeCard = ({ coffe }) => {
             </button>
           </Link>
 
-          <button
+          <Link to={`updateCoffe/${_id}`}><button
             type="button"
             className="bg-[#3C393B] text-white cursor-pointer m-1 p-2 rounded 
                        transition-all duration-200 hover:bg-[#2e2b2c] hover:scale-110"
           >
             <FaPenToSquare />
-          </button>
+          </button></Link>
 
           <button
             type="button"
