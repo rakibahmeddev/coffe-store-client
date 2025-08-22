@@ -7,6 +7,10 @@ import { Link } from 'react-router-dom';
 const CoffeCard = ({ coffe }) => {
   const { _id, name, supplier, taste, photoUrl } = coffe;
 
+  const handleDelete = _id => {
+    console.log(_id)
+  }
+
   return (
     <div
       className="p-4 bg-[#F5F4F1] rounded-lg shadow-lg flex items-center 
@@ -57,6 +61,7 @@ const CoffeCard = ({ coffe }) => {
           </button></Link>
 
           <button
+            onClick={() => handleDelete(_id)}
             type="button"
             className="bg-[#EA4744] text-white cursor-pointer m-1 p-2 rounded 
                        transition-all duration-200 hover:bg-[#d33d3b] hover:scale-110"
