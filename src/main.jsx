@@ -9,6 +9,8 @@ import Root from './Layout/Root';
 import Home from './Pages/Home';
 import Coffes from './components/Coffes';
 import CoffeDetails from './Pages/CoffeDetails';
+import SignUp from './Pages/SignUp';
+import SignIn from './Pages/SignIn';
 
 const router = createBrowserRouter([
   {
@@ -28,12 +30,22 @@ const router = createBrowserRouter([
       {
         path: 'updateCoffe/:id',
         element: <UpdateCoffe></UpdateCoffe>,
-        loader: ({params})=> fetch(`http://localhost:3000/coffe/${params.id}`)
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/coffe/${params.id}`),
       },
       {
         path: 'coffeDetails/:id',
         element: <CoffeDetails></CoffeDetails>,
-        loader: ({params})=> fetch(`http://localhost:3000/coffe/${params.id}`)
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/coffe/${params.id}`),
+      },
+      {
+        path: 'signIn',
+        element: <SignIn></SignIn>,
+      },
+      {
+        path: 'signUp',
+        element: <SignUp></SignUp>,
       },
     ],
   },

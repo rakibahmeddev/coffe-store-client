@@ -45,7 +45,7 @@ export default function Header() {
         Add Coffe
       </NavLink>
       <NavLink
-        to="/contact"
+        to="/signIn"
         className={({ isActive }) =>
           `mr-3 transition-all duration-200 hover:scale-95 ${
             isActive
@@ -54,7 +54,7 @@ export default function Header() {
           }`
         }
       >
-        Contact
+        Sign In
       </NavLink>
     </>
   );
