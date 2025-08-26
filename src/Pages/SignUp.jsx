@@ -2,9 +2,21 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const SignUp = () => {
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    console.log(email, password);
+  };
+
   return (
     <div className="flex justify-center py-10">
-      <form className="bg-white text-gray-500 max-w-[340px] w-full mx-4 md:p-6 p-4 py-8 text-left text-sm rounded-xl shadow-[0px_0px_10px_0px] shadow-black/10">
+      <form
+        onSubmit={handleSignUp}
+        className="bg-white text-gray-500 max-w-[340px] w-full mx-4 md:p-6 p-4 py-8 text-left text-sm rounded-xl shadow-[0px_0px_10px_0px] shadow-black/10"
+      >
         <h2 className="text-2xl font-bold mb-9 text-center text-gray-800">
           Sign Up Now
         </h2>
@@ -36,6 +48,7 @@ const SignUp = () => {
             className="w-full outline-none bg-transparent py-2.5"
             type="email"
             placeholder="Email"
+            name="email"
             required
           />
         </div>
@@ -56,21 +69,22 @@ const SignUp = () => {
             className="w-full outline-none bg-transparent py-2.5"
             type="password"
             placeholder="Password"
+            name="password"
             required
           />
         </div>
 
-        <button
+        <input
           type="submit"
+          value="Sign Up"
           className="w-full mb-3 bg-[#e3b578] text-[#372727] hover:bg-[#372727] hover:text-white transition py-2.5 rounded  font-medium"
-        >
-          Sign Up
-        </button>
+        />
+
         <p className="text-center mt-4">
           Already have an account?{' '}
-          <Linkg to="/signIn" className="text-[#e3b578] underline">
+          <Link to="/signIn" className="text-[#e3b578] underline">
             Sign In
-          </Linkg>
+          </Link>
         </p>
       </form>
     </div>
