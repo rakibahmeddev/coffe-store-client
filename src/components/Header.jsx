@@ -56,6 +56,18 @@ export default function Header() {
       >
         Sign In
       </NavLink>
+      <NavLink
+        to="/signUp"
+        className={({ isActive }) =>
+          `mr-3 transition-all duration-200 hover:scale-95 ${
+            isActive
+              ? 'text-[#E3B577] font-bold scale-110'
+              : 'text-white text-base'
+          }`
+        }
+      >
+        Sign Up
+      </NavLink>
     </>
   );
 
