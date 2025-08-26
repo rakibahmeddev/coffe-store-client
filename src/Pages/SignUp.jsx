@@ -1,14 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../providers/AuthProvider';
 
 const SignUp = () => {
+  const { createUser } = useContext(AuthContext);
+
   const handleSignUp = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
 
-    console.log(email, password);
+    // create a user
+    createUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
 
   return (
@@ -77,7 +87,7 @@ const SignUp = () => {
         <input
           type="submit"
           value="Sign Up"
-          className="w-full mb-3 bg-[#e3b578] text-[#372727] hover:bg-[#372727] hover:text-white transition py-2.5 rounded  font-medium"
+          className="w-full mb-3 bg-[#e3b578] text-[#372727] hover:bg-[#372727] hover:text-white transition py-2.5 rounded  font-medium cursor-pointer"
         />
 
         <p className="text-center mt-4">

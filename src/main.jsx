@@ -11,6 +11,7 @@ import Coffes from './components/Coffes';
 import CoffeDetails from './Pages/CoffeDetails';
 import SignUp from './Pages/SignUp';
 import SignIn from './Pages/SignIn';
+import AuthProvider from './providers/AuthProvider';
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>
 );
