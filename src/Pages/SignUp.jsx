@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 const SignUp = () => {
   const { createUser } = useContext(AuthContext);
@@ -8,13 +9,37 @@ const SignUp = () => {
   const handleSignUp = (e) => {
     e.preventDefault();
     const form = e.target;
+    const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
 
     // create a user
     createUser(email, password)
       .then((result) => {
+        const newUser = { name, email, password };
         console.log(result.user);
+
+        // send user data to db
+        fetch('http://localhost:3000/users', {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+          },
+          body: JSON.stringify(newUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log('data after fetching', data);
+            if (data.insertedId) {
+              Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Sign Up Completed',
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            }
+          });
       })
       .catch((error) => {
         console.log(error.message);
@@ -30,6 +55,29 @@ const SignUp = () => {
         <h2 className="text-2xl font-bold mb-9 text-center text-gray-800">
           Sign Up Now
         </h2>
+        <div className="flex items-center my-2 border bg-indigo-500/5 border-gray-500/10 rounded gap-1 pl-2">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M18.311 16.406a9.64 9.64 0 0 0-4.748-4.158 5.938 5.938 0 1 0-7.125 0 9.64 9.64 0 0 0-4.749 4.158.937.937 0 1 0 1.623.938c1.416-2.447 3.916-3.906 6.688-3.906 2.773 0 5.273 1.46 6.689 3.906a.938.938 0 0 0 1.622-.938M5.938 7.5a4.063 4.063 0 1 1 8.125 0 4.063 4.063 0 0 1-8.125 0"
+              fill="#6B7280"
+              fillOpacity=".6"
+            />
+          </svg>
+
+          <input
+            className="w-full outline-none bg-transparent py-2.5"
+            type="text"
+            placeholder="Name"
+            name="name"
+            required
+          />
+        </div>
         <div className="flex items-center my-2 border bg-indigo-500/5 border-gray-500/10 rounded gap-1 pl-2">
           <svg
             width="18"
