@@ -2,10 +2,34 @@ import React, { useState } from 'react';
 import { FaTrash } from 'react-icons/fa6';
 import { IoMdEye } from 'react-icons/io';
 import { useLoaderData } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const Users = () => {
   const loadedUsers = useLoaderData();
   const [users, setUsers] = useState(loadedUsers);
+
+  const handleDeleteUser = (id) => {
+    console.log(id);
+    fetch(`http://localhost:3000/users/${id}`, {
+      method: 'Delete',
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log('deleted', data);
+        if (data.deletedCount) {
+          const remainings = users.filter((user) => user._id !== id);
+          setUsers(remainings);
+
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'User has been deleted',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
 
   return (
     <div className="w-full md:w-3/4 mx-auto rounded py-6 md:py-10">
@@ -44,6 +68,7 @@ const Users = () => {
                     <IoMdEye />
                   </button>
                   <button
+                    onClick={() => handleDeleteUser(user._id)}
                     type="button"
                     className="bg-[#EA4744] text-white cursor-pointer m-1 p-2 rounded 
                                                        transition-all duration-200 hover:bg-[#d33d3b] hover:scale-110"
