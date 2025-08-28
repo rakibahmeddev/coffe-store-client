@@ -45,6 +45,18 @@ export default function Header() {
         Add Coffe
       </NavLink>
       <NavLink
+        to="/users"
+        className={({ isActive }) =>
+          `mr-3 transition-all duration-200 hover:scale-95 ${
+            isActive
+              ? 'text-[#E3B577] font-bold scale-110'
+              : 'text-white text-base'
+          }`
+        }
+      >
+        Users
+      </NavLink>
+      <NavLink
         to="/signIn"
         className={({ isActive }) =>
           `mr-3 transition-all duration-200 hover:scale-95 ${
@@ -55,18 +67,6 @@ export default function Header() {
         }
       >
         Sign In
-      </NavLink>
-      <NavLink
-        to="/signUp"
-        className={({ isActive }) =>
-          `mr-3 transition-all duration-200 hover:scale-95 ${
-            isActive
-              ? 'text-[#E3B577] font-bold scale-110'
-              : 'text-white text-base'
-          }`
-        }
-      >
-        Sign Up
       </NavLink>
     </>
   );
@@ -111,7 +111,7 @@ export default function Header() {
         {/* Right-side Buttons */}
         <div className="flex items-center ">
           <Link
-            to="/"
+            to="/signUp"
             className="hidden md:flex bg-[#E3B577] text-black px-5 py-2 rounded text-sm font-medium hover:border hover:border-white hover:bg-transparent hover:text-white transition"
             href="#"
           >

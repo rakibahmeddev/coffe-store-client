@@ -12,6 +12,7 @@ import CoffeDetails from './Pages/CoffeDetails';
 import SignUp from './Pages/SignUp';
 import SignIn from './Pages/SignIn';
 import AuthProvider from './providers/AuthProvider';
+import Users from './Pages/Users';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
         element: <CoffeDetails></CoffeDetails>,
         loader: ({ params }) =>
           fetch(`http://localhost:3000/coffe/${params.id}`),
+      },
+      {
+        path: 'users',
+        element: <Users></Users>,
       },
       {
         path: 'signIn',
