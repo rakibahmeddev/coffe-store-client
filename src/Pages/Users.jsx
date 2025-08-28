@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { FaTrash } from 'react-icons/fa6';
+import { IoMdEye } from 'react-icons/io';
+import { useLoaderData } from 'react-router-dom';
 
 const Users = () => {
+  const loadedUsers = useLoaderData();
+  const [users, setUsers] = useState(loadedUsers);
+
   return (
     <div className="w-full md:w-3/4 mx-auto rounded py-6 md:py-10">
       <h1 className="text-4xl text-center font-semibold text-slate-700 pb-4">
@@ -14,20 +20,39 @@ const Users = () => {
           {/* head */}
           <thead>
             <tr>
-              <th></th>
+              <th>ID</th>
               <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
+              <th>Email</th>
+              <th>Created At</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
             {/* row 1 */}
-            <tr>
-              <th>1</th>
-              <td>Cy Ganderton</td>
-              <td>Quality Control Specialist</td>
-              <td>Blue</td>
-            </tr>
+            {users.map((user, index) => (
+              <tr>
+                <th>{index + 1}</th>
+                <td>{user.name}</td>
+                <td>{user.email}</td>
+                <td>{user.accountCreationTime}</td>
+                <td>
+                  <button
+                    type="button"
+                    className="bg-[#D2B48C] text-white cursor-pointer m-1 p-2 rounded 
+                                           transition-all duration-200 hover:bg-[#c19c73] hover:scale-110"
+                  >
+                    <IoMdEye />
+                  </button>
+                  <button
+                    type="button"
+                    className="bg-[#EA4744] text-white cursor-pointer m-1 p-2 rounded 
+                                                       transition-all duration-200 hover:bg-[#d33d3b] hover:scale-110"
+                  >
+                    <FaTrash />
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
