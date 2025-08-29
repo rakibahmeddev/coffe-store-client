@@ -10,25 +10,37 @@ const Users = () => {
 
   const handleDeleteUser = (id) => {
     console.log(id);
-    fetch(`http://localhost:3000/users/${id}`, {
-      method: 'Delete',
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log('deleted', data);
-        if (data.deletedCount) {
-          const remainings = users.filter((user) => user._id !== id);
-          setUsers(remainings);
 
-          Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'User has been deleted',
-            showConfirmButton: false,
-            timer: 1500,
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:3000/users/${id}`, {
+          method: 'Delete',
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log('deleted', data);
+
+            if (data.deletedCount) {
+              const remainings = users.filter((user) => user._id !== id);
+              setUsers(remainings);
+
+              Swal.fire({
+                title: 'Deleted!',
+                text: 'Your file has been deleted.',
+                icon: 'success',
+              });
+            }
           });
-        }
-      });
+      }
+    });
   };
 
   return (
