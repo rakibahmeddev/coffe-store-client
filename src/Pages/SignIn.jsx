@@ -2,9 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const SignIn = () => {
+  const handleSignIn = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+  };
   return (
     <div className="flex justify-center py-10">
-      <form className="bg-white text-gray-500 max-w-[340px] w-full mx-4 md:p-6 p-4 py-8 text-left text-sm rounded-xl shadow-[0px_0px_10px_0px] shadow-black/10">
+      <form
+        onSubmit={handleSignIn}
+        className="bg-white text-gray-500 max-w-[340px] w-full mx-4 md:p-6 p-4 py-8 text-left text-sm rounded-xl shadow-[0px_0px_10px_0px] shadow-black/10"
+      >
         <h2 className="text-2xl font-bold mb-9 text-center text-gray-800">
           Welcome Back
         </h2>
@@ -35,6 +45,7 @@ const SignIn = () => {
           <input
             className="w-full outline-none bg-transparent py-2.5"
             type="email"
+            name="email"
             placeholder="Email"
             required
           />
@@ -55,6 +66,7 @@ const SignIn = () => {
           <input
             className="w-full outline-none bg-transparent py-2.5"
             type="password"
+            name="password"
             placeholder="Password"
             required
           />
